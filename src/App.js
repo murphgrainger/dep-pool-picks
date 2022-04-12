@@ -1,18 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Routes, Route, Navigate } from "react-router-dom";
 import './App.css';
 
-function App() {
+import Home from './pages/Home';
+import CreatePool from './pages/CreatePool';
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Welcome to Pool Picks!
-        </p>
-      </header>
-    </div>
+      <div>
+        <Routes>
+          <Route path="/create-pool" element={<CreatePool/>}/>
+          <Route path="/" element={<Home/>}/>
+          <Route path="*" element={<Navigate replace to="/" />} />
+        </Routes>
+      </div>
   );
 }
-
-export default App;
