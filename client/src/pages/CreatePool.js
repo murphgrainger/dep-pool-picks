@@ -30,6 +30,17 @@ export default function CreatePool() {
         try {
             setLoading(true);
             console.log("Submitting the form!", formValues)
+            const res = await fetch('/api/v1/pool', {
+                method: 'POST',
+                headers: {
+                "content-type": "application/json"
+            },
+                body:JSON.stringify(formValues),
+        });
+            if(!res.ok) throw new Error(res.statusText);
+            const data = await res.json();
+            console.log("Response from server!", data);
+
         } catch(error) {
             console.log(error);
             setLoading(false);
