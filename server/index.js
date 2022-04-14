@@ -1,3 +1,7 @@
+require('dotenv').config();
+
+console.log(process.env.DEV_DB_URL)
+
 const express = require("express");
 const path = require("path");
 const morgan = require('morgan');

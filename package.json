@@ -23,8 +23,11 @@
   "homepage": "https://github.com/murphgrainger/pool-picks#readme",
   "dependencies": {
     "concurrently": "^7.1.0",
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "knex": "^1.0.7",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.3"
   }
 }
