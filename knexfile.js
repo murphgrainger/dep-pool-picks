@@ -1,9 +1,13 @@
 require('dotenv').config();
+const path = require("path");
 
 module.exports = {
   development: {
     client: 'pg',
-    connection: process.env.DEV_DB_URL
+    connection: process.env.DEV_DB_URL,
+    migrations: {
+      directory: path.join(__dirname, './server/db/migrations')
+    }
   },
 
   test: {

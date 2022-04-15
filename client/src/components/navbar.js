@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { Link } from "react-router-dom";
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -18,9 +20,9 @@ export default function ButtonAppBar() {
             sx={{ mr: 2 }}
           >
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Link to="/"><Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Pool Picks
-          </Typography>
+          </Typography></Link>
           {/* <Button color="inherit">Login</Button> */}
         </Toolbar>
       </AppBar>

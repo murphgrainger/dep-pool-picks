@@ -30,3 +30,7 @@
   padding: 1em;
   border-radius: 5px;
 }
+
+a {
+  all: initial;
+}

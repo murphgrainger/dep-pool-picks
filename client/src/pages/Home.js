@@ -4,8 +4,6 @@ import Navbar from '../components/navbar';
 
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import Grid from '@mui/material/Grid';
 import CardHorizontal from '../components/card-horizontal';
 
 export default function Home() {
@@ -30,6 +28,7 @@ export default function Home() {
             <p>From here you can create pools, add players, and see track winners as tournaments progress!</p>
 
             <Button variant="contained" href="/create-pool">Create Pool</Button>
+            <Button variant="outlined" href="/pools">View Pools</Button>
 
             <div>
                 <h2>Existing Pools</h2>

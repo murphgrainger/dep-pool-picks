@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 import Navbar from '../components/navbar';
 
@@ -8,6 +9,7 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 
 export default function CreatePool() {
+    const navigate = useNavigate();
 
     const[isLoading, setLoading] = useState(false);
     const[formValues, setValues] = useState({
@@ -29,8 +31,7 @@ export default function CreatePool() {
 
         try {
             setLoading(true);
-            console.log("Submitting the form!", formValues)
-            const res = await fetch('/api/v1/pool', {
+            const res = await fetch('/api/v1/pools', {
                 method: 'POST',
                 headers: {
                 "content-type": "application/json"
@@ -39,7 +40,8 @@ export default function CreatePool() {
         });
             if(!res.ok) throw new Error(res.statusText);
             const data = await res.json();
-            console.log("Response from server!", data);
+            console.log(data.poolId);
+            navigate(`/pools/${data.poolId}`);
 
         } catch(error) {
             console.log(error);

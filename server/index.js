@@ -1,7 +1,4 @@
 require('dotenv').config();
-
-console.log(process.env.DEV_DB_URL)
-
 const express = require("express");
 const path = require("path");
 const morgan = require('morgan');
@@ -16,7 +13,7 @@ app.use(morgan('dev'));
 app.use(express.static(__dirname));
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
-app.use('/api/v1/pool', pool);
+app.use('/api/v1/pools', pool);
 
 app.get('*', (_req, res) => {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
