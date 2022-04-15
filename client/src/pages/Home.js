@@ -29,12 +29,6 @@ export default function Home() {
 
             <Button variant="contained" href="/create-pool">Create Pool</Button>
             <Button variant="outlined" href="/pools">View Pools</Button>
-
-            <div>
-                <h2>Existing Pools</h2>
-                { pools.map(pool => <CardHorizontal content={pool}/>) }
-            </div>
-
          </Container>
         </>
     )
