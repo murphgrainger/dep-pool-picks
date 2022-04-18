@@ -1,12 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Navbar from '../components/navbar';
-
 import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
+
 import CardHorizontal from '../components/card-horizontal';
 
 export default function Home() {
+    const navigate = useNavigate();
 
     const pools = [
         {
@@ -23,12 +24,33 @@ export default function Home() {
     return (
         <>
          <Navbar/>
-         <Container maxWidth="lg">
-            <h1>Welcome to the Pool Picks!</h1>
-            <p>From here you can create pools, add players, and see track winners as tournaments progress!</p>
-
-            <Button variant="contained" href="/create-pool">Create Pool</Button>
-            <Button variant="outlined" href="/pools">View Pools</Button>
+         <Container className="container">
+            <div className="app-header">
+                <h1>Welcome to the Pool Picks!</h1>
+                <p>Excuse our appearance! This app is just getting started.</p>
+            </div>
+            <div className="column-wrapper">
+                <div className="column">
+                    <div className="card-hero">
+                        <h3>Pools</h3>
+                        <p>Click to see all the pools.</p>
+                        <div className="action">
+                            <button onClick={() => navigate('/pools')}>See All Pools</button>
+                            <button onClick={() => navigate('/create-pool')}>Create Pool</button>
+                        </div>
+                    </div>
+                </div>
+                <div className="column">
+                    <div className="card-hero --tertiary">
+                        <h3>Tournaments</h3>
+                        <p>There are no tournaments at this time.</p>
+                        <div className="action">
+                            <button disabled>View Tournaments</button>
+                            <button disabled>Create Tournament</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
          </Container>
         </>
     )

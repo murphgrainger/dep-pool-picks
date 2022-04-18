@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, Navigate } from "react-router-dom";
-import './App.css';
+import './styles/App.css';
 
 import Home from './pages/Home';
 import Pools from './pages/Pools';
@@ -9,7 +9,7 @@ import CreatePool from './pages/CreatePool';
 
 export default function App() {
   return (
-      <div>
+      <div className="App">
         <Routes>
           <Route path="/create-pool" element={<CreatePool/>}/>
           <Route path="/pools" element={<Pools/>}/>

@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 
 export default function ButtonAppBar() {
   return (
@@ -20,10 +21,9 @@ export default function ButtonAppBar() {
             sx={{ mr: 2 }}
           >
           </IconButton>
-          <Link to="/"><Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Pool Picks
-          </Typography></Link>
-          {/* <Button color="inherit">Login</Button> */}
+          </Typography>
         </Toolbar>
       </AppBar>
     </Box>
