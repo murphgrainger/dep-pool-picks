@@ -7,6 +7,8 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 
 const pool = require('./api/v1/pool');
+const tournament = require('./api/v1/tournament');
+
 const graphql = require('./db/config');
 
 app.use(express.json());
@@ -16,6 +18,8 @@ app.use(express.static(__dirname));
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 app.use('/api/v1/pools', pool);
+app.use('/api/v1/tournaments', tournament);
+
 app.use('/graphql', graphql);
 
 app.get('*', (_req, res) => {

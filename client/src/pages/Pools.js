@@ -33,7 +33,10 @@ export default function Pools() {
         <>
             <Navbar/>   
             <Container>
-             <h1>Here is the Pool comp!</h1>
+            <div className="app-header">
+                <h1>Pool List</h1>
+                <p>Excuse our appearance! This app is just getting started.</p>
+            </div>
              { pools && pools.map((pool, i) => { 
                  return (
                     <div key={i} className="card-horizontal">

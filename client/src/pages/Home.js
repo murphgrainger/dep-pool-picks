@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Navbar from '../components/navbar';
@@ -8,6 +8,7 @@ import CardHorizontal from '../components/card-horizontal';
 
 export default function Home() {
     const navigate = useNavigate();
+    const[tournaments, setTournaments] = useState([]);
 
     const pools = [
         {
@@ -20,6 +21,23 @@ export default function Home() {
             tournament: 'PGA Tournament'
         }
     ]
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('/api/v1/tournaments', {
+                    headers: { 'content-type': 'application/json'}
+                })
+                if(!response.ok) throw new Error(response.statusText)
+                const tournaments = await response.json();
+                console.log(tournaments)
+                setTournaments(tournaments)
+            } catch(error) {
+                console.log(error)
+            }
+        }
+        fetchData()
+    },[])
 
     return (
         <>
@@ -44,9 +62,11 @@ export default function Home() {
                     <div className="card-hero --tertiary">
                         <h3>Tournaments</h3>
                         <p>There are no tournaments at this time.</p>
+                        {tournaments && tournaments.map((t,i) => <CardHorizontal key={i} content={t} link={`/tournaments/${t.id}`}/>)}
+
                         <div className="action">
                             <button disabled>View Tournaments</button>
-                            <button disabled>Create Tournament</button>
+                            <button onClick={() => navigate('/create-tournament')}>Create Tournament</button>
                         </div>
                     </div>
                 </div>

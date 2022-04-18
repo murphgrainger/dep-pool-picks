@@ -2,26 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 
 import Navbar from '../components/navbar';
-import CardHorizontal from '../components/card-horizontal';
 
 import Button from '@mui/material/Button';
 
 
-export default function Pool() {
-    const { poolId } = useParams();
-    const[pool, setPool] = useState([])
+export default function Tournament() {
+    const { tournamentId } = useParams();
+    const[tournament, setTournament] = useState([])
 
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                console.log(poolId)
-                const response = await fetch(`/api/v1/pools/${poolId}`, {
+                const response = await fetch(`/api/v1/tournaments/${tournamentId}`, {
                     headers: { 'content-type': 'application/json'}
                 })
-                const pool = await response.json();
-                setPool(pool);
-                console.log(pool)
+                const tournament = await response.json();
+                console.log(tournament)
+                setTournament(tournament);
             } catch(error) {
                 console.log(error);
             }
@@ -35,10 +33,10 @@ export default function Pool() {
         <Navbar/>
         <div className="container">
             <div className="app-header">
-             <h1>{pool.name}</h1>
-             <p>{pool.tournament}</p>
+             <h1>{tournament.year} {tournament.name}</h1>
+             <p>{tournament.sport}</p>
             </div>
-         <Button variant="outlined" href="/pools">Back to Pools</Button>
+         <Button variant="outlined" href="/">Back to Home</Button>
         </div>
         </>
         
