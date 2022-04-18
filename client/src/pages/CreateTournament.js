@@ -89,7 +89,7 @@ export default function CreateTournament() {
                     </Grid>
                     <Grid item xs={12}>
                     <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">Sport</InputLabel>
+                        <InputLabel>Sport</InputLabel>
                         <Select 
                             id="sport" 
                             name="sport"

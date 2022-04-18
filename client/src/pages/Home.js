@@ -9,18 +9,7 @@ import CardHorizontal from '../components/card-horizontal';
 export default function Home() {
     const navigate = useNavigate();
     const[tournaments, setTournaments] = useState([]);
-
-    const pools = [
-        {
-            id: 1,
-            name: 'Grainger Masters 2022',
-            tournament: 'Masters'
-        },{
-            id: 2,
-            name: 'Peters PGA 2022',
-            tournament: 'PGA Tournament'
-        }
-    ]
+    const[pools, setPools] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -30,8 +19,14 @@ export default function Home() {
                 })
                 if(!response.ok) throw new Error(response.statusText)
                 const tournaments = await response.json();
-                console.log(tournaments)
                 setTournaments(tournaments)
+
+                const poolRes = await fetch('/api/v1/pools', {
+                    headers: { 'content-type': 'application/json'}
+                })
+                if(!response.ok) throw new Error(response.statusText)
+                const pools = await poolRes.json();
+                setPools(pools)
             } catch(error) {
                 console.log(error)
             }
@@ -51,7 +46,8 @@ export default function Home() {
                 <div className="column">
                     <div className="card-hero">
                         <h3>Pools</h3>
-                        <p>Click to see all the pools.</p>
+                        {pools && pools.map((p,i) => <CardHorizontal key={i} content={p} link={`/pools/${p.id}`}/>)}
+
                         <div className="action">
                             <button onClick={() => navigate('/pools')}>See All Pools</button>
                             <button onClick={() => navigate('/create-pool')}>Create Pool</button>
@@ -61,7 +57,6 @@ export default function Home() {
                 <div className="column">
                     <div className="card-hero --tertiary">
                         <h3>Tournaments</h3>
-                        <p>There are no tournaments at this time.</p>
                         {tournaments && tournaments.map((t,i) => <CardHorizontal key={i} content={t} link={`/tournaments/${t.id}`}/>)}
 
                         <div className="action">

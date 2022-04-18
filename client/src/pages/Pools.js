@@ -18,7 +18,7 @@ export default function Pools() {
                 })
                 const pools = await response.json();
 
-                setPools(pools.pools);
+                setPools(pools);
 
             } catch(error) {
                 console.log(error)

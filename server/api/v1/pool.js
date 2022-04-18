@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
     try {
         console.log('hitting endpoint')
         const pools = await knex('pool').select('*')
-        return res.status(200).json({pools})
+        return res.status(200).json(pools)
 
     } catch (error) {
         console.log(error);
@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
         .returning('id')
         .insert({
             name:req.body.name,
-            tournament: req.body.tournament
+            tournament_id: req.body.tournamentId
         })
 
         return res.status(200).json({poolId: createdPool[0]['id']});
