@@ -44,8 +44,8 @@ export default function Home() {
             </div>
             <div className="column-wrapper">
                 <div className="column">
-                    <div className="card-hero">
-                        <h3>Pools</h3>
+                    <div className="card-hero --turquoise">
+                        <h2>Pools</h2>
                         {pools && pools.map((p,i) => <CardHorizontal key={i} content={p} link={`/pools/${p.id}`}/>)}
 
                         <div className="action">
@@ -56,11 +56,10 @@ export default function Home() {
                 </div>
                 <div className="column">
                     <div className="card-hero --tertiary">
-                        <h3>Tournaments</h3>
+                        <h2>Tournaments</h2>
                         {tournaments && tournaments.map((t,i) => <CardHorizontal key={i} content={t} link={`/tournaments/${t.id}`}/>)}
 
                         <div className="action">
-                            <button disabled>View Tournaments</button>
                             <button onClick={() => navigate('/create-tournament')}>Create Tournament</button>
                         </div>
                     </div>

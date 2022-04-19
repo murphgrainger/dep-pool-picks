@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import Navbar from '../components/navbar';
 import CardHorizontal from '../components/card-horizontal';
@@ -8,6 +8,8 @@ import Button from '@mui/material/Button';
 
 
 export default function Pool() {
+    const navigate = useNavigate();
+
     const { poolId } = useParams();
     const[pool, setPool] = useState([])
 
@@ -36,9 +38,12 @@ export default function Pool() {
         <div className="container">
             <div className="app-header">
              <h1>{pool.name}</h1>
-             <p>{pool.tournament}</p>
+             <button onClick={() => navigate('/pools')}>Add Pool Member</button>         
             </div>
-         <Button variant="outlined" href="/pools">Back to Pools</Button>
+            <div className="action">
+                <button onClick={() => navigate('/pools')}>Back to Pools</button>         
+                <button onClick={() => navigate('/')}>Back to Home</button>
+            </div>
         </div>
         </>
         

@@ -14,6 +14,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
   margin: 1em;
   margin-top: 2em;
   padding: 2em;
@@ -71,6 +72,10 @@
   color: white;
 }
 
+.card-hero.--turquoise {
+  background-color: var(--color-turquoise);
+}
+
 .action {
   width: 100%;
   display: flex;
@@ -78,8 +83,8 @@
   padding-top: 1em;
 }
 
-h3 {
-  margin: 0;
+h2, h3 {
+  margin-top: 0;
 }
 .button-wrapper {
   margin: 0 .5em;
