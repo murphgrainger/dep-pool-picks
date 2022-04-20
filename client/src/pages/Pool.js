@@ -23,7 +23,7 @@ export default function Pool() {
         const fetchData = async () => {
             try {
                 console.log(poolId)
-                const response = await fetch(`/api/v1/pools/${poolId}`, {
+                const response = await fetch(`/api/v1/members/${poolId}`, {
                     headers: { 'content-type': 'application/json'}
                 })
                 const pool = await response.json();
@@ -61,6 +61,8 @@ export default function Pool() {
             if(!res.ok) throw new Error(res.statusText)
             const data = await res.json();
             console.log('data', data);
+            toggleAddMember(false);
+            setValues([]);
         } catch (error) {
             console.log(error);
         }
