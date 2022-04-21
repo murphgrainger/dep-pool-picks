@@ -7,7 +7,7 @@ router.post('/', async (req,res) => {
     try {
         console.log(req.body);
         const memberId = await knex('member').returning('*').insert({
-            name:req.body.name,
+            member_name:req.body.name,
             pool_id: req.body.poolId
         })
         console.log(memberId);
@@ -21,7 +21,7 @@ router.post('/', async (req,res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const members = await Q.getMembersPerPool(req.params.id);
+        const members = await Q.getPoolsAndMembers(req.params.id);
         return res.status(200).json(members)
     } catch(error) {
         console.log(error);

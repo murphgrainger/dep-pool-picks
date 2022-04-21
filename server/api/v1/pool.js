@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../../db/knex');
+const Q = require('../../db/queries-knex');
 
 router.get('/', async (req, res) => {
     try {
@@ -16,9 +17,8 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        console.log(req.params.id)
-        const [pool] = await knex('pool').select('*').where('id', req.params.id)
-        return res.status(200).json(pool)
+        const poolAndMembers = await Q.getPoolsandMembers(req.params.id);
+        return res.status(200).json(poolAndMembers)
 
     } catch (error) {
         console.log(error);

@@ -20,22 +20,22 @@ export default function Pool() {
     const[showAddMember, toggleAddMember] = useState(false);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                console.log(poolId)
-                const response = await fetch(`/api/v1/members/${poolId}`, {
-                    headers: { 'content-type': 'application/json'}
-                })
-                const pool = await response.json();
-                setPool(pool);
-                console.log(pool)
-            } catch(error) {
-                console.log(error);
-            }
-
-        }
         fetchData()
     },[])
+
+    const fetchData = async () => {
+        try {
+            const response = await fetch(`/api/v1/pools/${poolId}`, {
+                headers: { 'content-type': 'application/json'}
+            })
+            const pool = await response.json();
+            setPool(pool);
+            console.log(pool)
+        } catch(error) {
+            console.log(error);
+        }
+
+    }
 
     const handleInputChange = (event) => {
         const name = event.target.name;
@@ -63,6 +63,7 @@ export default function Pool() {
             console.log('data', data);
             toggleAddMember(false);
             setValues([]);
+            fetchData()
         } catch (error) {
             console.log(error);
         }
@@ -74,6 +75,9 @@ export default function Pool() {
         <div className="container">
             <div className="app-header">
              <h1>{pool.name}</h1>
+             <h3>Members</h3>
+             {pool.members && pool.members.map(member => <h5>{member.member_name}</h5>)}
+
              { !showAddMember && <button onClick={() => toggleAddMember(true)}>Add Pool Member</button> }      
              { showAddMember && 
              <div>
@@ -100,9 +104,7 @@ export default function Pool() {
                     </Grid>
                 </form>
             </div> }  
-            </div>
-
-     
+            </div>     
             <div className="action">
                 <button onClick={() => navigate('/pools')}>Back to Pools</button>         
                 <button onClick={() => navigate('/')}>Back to Home</button>
