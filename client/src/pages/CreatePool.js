@@ -29,7 +29,6 @@ export default function CreatePool() {
                 headers: { 'content-type': 'application/json'}
             })
             const data = await res.json();
-            console.log(data)
             setTournaments(data)
         }
         fetchData()
@@ -58,7 +57,6 @@ export default function CreatePool() {
         });
             if(!res.ok) throw new Error(res.statusText);
             const data = await res.json();
-            console.log(data.poolId);
             navigate(`/pools/${data.poolId}`);
 
         } catch(error) {

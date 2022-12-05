@@ -30,7 +30,6 @@ export default function Pool() {
             })
             const pool = await response.json();
             setPool(pool);
-            console.log(pool)
         } catch(error) {
             console.log(error);
         }
@@ -60,7 +59,6 @@ export default function Pool() {
             })
             if(!res.ok) throw new Error(res.statusText)
             const data = await res.json();
-            console.log('data', data);
             toggleAddMember(false);
             setValues([]);
             fetchData()

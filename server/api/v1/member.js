@@ -5,12 +5,10 @@ const Q = require('../../db/queries-knex');
 
 router.post('/', async (req,res) => {
     try {
-        console.log(req.body);
         const memberId = await knex('member').returning('*').insert({
             member_name:req.body.name,
             pool_id: req.body.poolId
         })
-        console.log(memberId);
         res.status(200).json(memberId);
 
     } catch(error) {

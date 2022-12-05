@@ -18,7 +18,6 @@ export default function Tournament() {
                     headers: { 'content-type': 'application/json'}
                 })
                 const tournament = await response.json();
-                console.log(tournament)
                 setTournament(tournament);
             } catch(error) {
                 console.log(error);
