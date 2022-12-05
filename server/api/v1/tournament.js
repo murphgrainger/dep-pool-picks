@@ -6,7 +6,6 @@ const knex = require('../../db/knex');
 router.get('/', async (req,res) => {
     try {
         const tournaments = await knex('tournament').select('*')
-        console.log(tournaments)
         return res.status(200).json(tournaments)
     } catch(error) {
         console.log(error);
@@ -16,7 +15,6 @@ router.get('/', async (req,res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        console.log(req.params.id)
         const [tournament] = await knex('tournament').select('*').where('id', req.params.id)
         return res.status(200).json(tournament)
 

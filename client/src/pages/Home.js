@@ -49,7 +49,7 @@ export default function Home() {
                         {pools && pools.map((p,i) => <CardHorizontal key={i} content={p} link={`/pools/${p.id}`}/>)}
 
                         <div className="action">
-                            <button onClick={() => navigate('/pools')}>See All Pools</button>
+                            <button onClick={() => navigate('/pools')}>See All</button>
                             <button onClick={() => navigate('/create-pool')}>Create Pool</button>
                         </div>
                     </div>
@@ -60,6 +60,7 @@ export default function Home() {
                         {tournaments && tournaments.map((t,i) => <CardHorizontal key={i} content={t} link={`/tournaments/${t.id}`}/>)}
 
                         <div className="action">
+                            <button onClick={() => navigate('/tournaments')}>See All</button>
                             <button onClick={() => navigate('/create-tournament')}>Create Tournament</button>
                         </div>
                     </div>

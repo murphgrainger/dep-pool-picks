@@ -5,7 +5,6 @@ const Q = require('../../db/queries-knex');
 
 router.get('/', async (req, res) => {
     try {
-        console.log('hitting endpoint')
         const pools = await knex('pool').select('*')
         return res.status(200).json(pools)
 
@@ -29,7 +28,6 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         if(!req.body.name) throw new Error({message: 'Invalid Pool Creation'});
-        console.log(req.body);
         const createdPool = await knex('pool')
         .returning('id')
         .insert({

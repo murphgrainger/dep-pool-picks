@@ -76,7 +76,7 @@ export default function Pool() {
             <div className="app-header">
              <h1>{pool.name}</h1>
              <h3>Members</h3>
-             {pool.members && pool.members.map(member => <h5>{member.member_name}</h5>)}
+             {pool.members && pool.members.map((member,i) => <h5 key={i}>{member.member_name}</h5>)}
 
              { !showAddMember && <button onClick={() => toggleAddMember(true)}>Add Pool Member</button> }      
              { showAddMember && 

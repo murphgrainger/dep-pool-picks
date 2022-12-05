@@ -37,7 +37,6 @@ export default function CreateTournament() {
 
         try {
             setLoading(true);
-            console.log(formValues);
             const res = await fetch('/api/v1/tournaments', {
                 method: 'POST',
                 headers: {
@@ -47,7 +46,6 @@ export default function CreateTournament() {
         });
             if(!res.ok) throw new Error(res.statusText);
             const data = await res.json();
-            console.log(data.tournamentId);
             navigate(`/tournament/${data.tournamentId}`);
 
         } catch(error) {
